@@ -1,0 +1,59 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:simpleType name="myNote">  
+    <xs:restriction base="xs:float">  
+        <xs:minInclusive value="0"/>  
+        <xs:maxInclusive value="20"/>  
+    </xs:restriction>  
+</xs:simpleType>
+
+<xs:simpleType name="Seuil_val">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="12"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+
+    <xs:element name="Notes">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Note" maxOccurs="unbounded"> 
+                    <xs:complexType>
+            
+            <xs:sequence>
+                
+               <xs:element name="CNE" type="xs:string" maxOccurs="1"/>
+               
+               <xs:element name = "FirstName">
+                  <xs:simpleType>
+                     <xs:restriction base = "xs:string">
+                        <xs:pattern value = "([a-z A-Z])*"/>
+                     </xs:restriction>
+                  </xs:simpleType>
+               </xs:element>
+               <xs:element name = "LastName">
+                <xs:simpleType>
+                   <xs:restriction base = "xs:string">
+                      <xs:pattern value = "([a-z A-Z])*"/>
+                   </xs:restriction>
+                </xs:simpleType>
+             </xs:element> 
+             <xs:element name="NoteModule" maxOccurs="12">  
+             <xs:complexType>  
+               <xs:simpleContent>  
+                  <xs:extension base="myNote">  
+                      <xs:attribute name="name" type="xs:string" use="required"/>  
+                  </xs:extension>  
+               </xs:simpleContent>  
+              </xs:complexType>  
+             </xs:element>
+             </xs:sequence>
+             <xs:attribute name="id" type="xs:string" use="required"/>
+        </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+
+        
+    </xs:element>
+</xs:schema>
